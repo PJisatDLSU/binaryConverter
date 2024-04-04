@@ -19,15 +19,18 @@ module system (
     reg [1:0] state;
 reg mealy_switch_last = 0;
 
-always @(posedge mealy_switch) begin
-    case (state)
-        2'b00: state <= 2'b01;
-        2'b01: state <= 2'b10;
-        2'b10: state <= 2'b00;
-        default: state <= 2'b00;
-    endcase
+always @(mealy_switch) begin
+    if (mealy_switch == 1'b1 && mealy_switch_last == 1'b0) begin
+        case (state)
+            2'b00: state <= 2'b01;
+            2'b01: state <= 2'b10;
+            2'b10: state <= 2'b00;
+            default: state <= 2'b00;
+        endcase
+    end
     mealy_switch_last <= mealy_switch;
 end
+
 
 always @* begin
     case (state)
@@ -49,7 +52,5 @@ always @* begin
         end
     endcase
 end
-
-
 
 endmodule
