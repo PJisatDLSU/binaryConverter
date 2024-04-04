@@ -22,7 +22,7 @@ always @* begin
         16'b0010000000000000: begin out1 = 7'b0111101; out2 = 7'b0000000; end //d
         16'b0100000000000000: begin out1 = 7'b1001111; out2 = 7'b0000000; end //E
         16'b1000000000000000: begin out1 = 7'b1000111; out2 = 7'b0000000; end //F
-        default: begin out1 = 7'b0000000; out2 = 7'b000000000; end
+        default: begin out1 = 7'b0000000; out2 = 7'b0000000; end
     endcase
 end
 
